@@ -1,5 +1,15 @@
+<?php
+// Inicia a sessão para manter o usuário logado
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario_logado'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +25,7 @@
 
         .container {
             flex: 1;
-            margin-top: 100px; /* Aumenta o espaço acima da área do conteúdo */
+            margin-top: 100px;
         }
 
         .navbar {
@@ -50,32 +60,32 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="index.html">Controle de Patrimônio</a>
+    <a class="navbar-brand" href="index.php">Controle de Patrimônio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Página Inicial</a>
+                <a class="nav-link" href="index.php">Página Inicial</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="patrimonio.html">Gerenciar Patrimônio</a>
+                <a class="nav-link" href="patrimonio.php">Gerenciar Patrimônio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="transfer.html">Registrar Transferência</a>
+                <a class="nav-link" href="transfer.php">Registrar Transferência</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="fornecedor.html">Gerenciar Fornecedor</a>
+                <a class="nav-link" href="fornecedor.php">Gerenciar Fornecedor</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="departamento.html">Gerenciar Departamento</a>
+                <a class="nav-link" href="departamento.php">Gerenciar Departamento</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="movimento.html">Movimento de Transferências</a>
+                <a class="nav-link" href="movimento.php">Movimento de Transferências</a>
             </li>
         </ul>
-        <a class="btn btn-outline-light" href="login.html">Logoff</a>
+        <a class="btn btn-outline-light" href="logout.php">Logoff</a>
     </div>
 </nav>
 
@@ -84,25 +94,25 @@
     <p class="mb-4">Escolha uma das opções abaixo para gerenciar o controle de patrimônio:</p>
     <div class="row">
         <div class="col-md-4 mb-3">
-            <a href="patrimonio.html" class="btn btn-custom w-100">Gerenciar Patrimônio</a>
+            <a href="patrimonio.php" class="btn btn-custom w-100">Gerenciar Patrimônio</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="transfer.html" class="btn btn-custom w-100">Registrar Transferência</a>
+            <a href="transfer.php" class="btn btn-custom w-100">Registrar Transferência</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="fornecedor.html" class="btn btn-custom w-100">Gerenciar Fornecedor</a>
+            <a href="fornecedor.php" class="btn btn-custom w-100">Gerenciar Fornecedor</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="departamento.html" class="btn btn-custom w-100">Gerenciar Departamento</a>
+            <a href="departamento.php" class="btn btn-custom w-100">Gerenciar Departamento</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="movimento.html" class="btn btn-custom w-100">Movimento de Transferências</a>
+            <a href="movimento.php" class="btn btn-custom w-100">Movimento de Transferências</a>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2024 Controle de Patrimônio. Todos os direitos reservados.</p>
+    <p>&copy; <?php echo date('Y'); ?> Controle de Patrimônio. Todos os direitos reservados.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
